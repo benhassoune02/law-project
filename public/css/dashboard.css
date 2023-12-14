@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+   
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px; 
+    background-color: rgba(2, 61, 124, 0.89);
+}
+
+.nav a {
+    text-decoration: none;
+    color: white; 
+    margin: 0 15px; 
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: red; /* Change the color on hover */
+}
+
+.nav img {
+    max-height: 50px; /* Set the maximum height for the logo image */
+}
+
+

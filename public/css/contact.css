@@ -1,0 +1,164 @@
+body {
+    
+    background-color: #f8f9fa;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px; 
+    background-color: rgba(2, 61, 124, 0.89);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav a {
+    text-decoration: none;
+    color: white; 
+    margin: 0 15px; 
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: red; /* Change the color on hover */
+}
+
+.nav img {
+    max-height: 50px; /* Set the maximum height for the logo image */
+}
+
+h1 {
+    padding-left: 490px;
+    padding-top: 12px;
+    color: #343a40;
+}
+
+.cart-item {
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item p {
+    margin: 0;
+    padding: 0;
+}
+
+.cart-item p.content {
+    font-weight: bold;
+}
+
+.cart-item p.user {
+    color: #7b8a9f;
+}
+
+.idea-form {
+    max-width: 400px;
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.idea-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.idea-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.idea-form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.idea-form button:hover {
+    background-color: #0056b3;
+}
+
+#By{
+    color: #7b8a9f;
+    font-size: 18px;
+    padding-left: 1340px;
+}
+
+.cart-item-link {
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+    display: block;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.cart-item-link:hover {
+    background-color: #f0f0f0;
+}
+
+h2, p {
+    margin: 0;
+}
+
+#trash{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 12px;
+    margin-top: 2px;
+}
+#pencil{
+    margin-top: 11px;
+    font-size: 16px;
+}
+
+.svgs{
+    display: flex;
+}
+
+
+
+button {
+    background-color: #007bff; /* Set the background color */
+    color: #fff; /* Set the text color to white */
+    border: 2px solid #007bff; /* Set a border around the button */
+    padding: 10px 20px; /* Add padding for better appearance */
+    font-size: 16px; /* Adjust the font size */
+    cursor: pointer; /* Change the cursor on hover */
+    transition: background-color 0.3s ease; /* Add a smooth transition effect for background color */
+}
+a{
+    text-decoration: none;
+}
