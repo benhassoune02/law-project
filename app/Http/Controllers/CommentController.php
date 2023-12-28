@@ -45,6 +45,6 @@ class CommentController extends Controller
     {
         $comment->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('Answer', 'Comment deleted successfully.');
     }
 }

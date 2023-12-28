@@ -10,21 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 17px;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
 
-        main {
-            text-align: center;
-        }
 
         form {
             background-color: #fff;
@@ -78,23 +64,17 @@
 
 <body>
 
-    <nav class="nav">
-        <div>
-            <a href=""><img src="/images/avocat-conseil-enligne.png"></a>
-        </div>
-        <div style="display: flex; align-items: center;">
-            <a style="text-decoration: none; color: white;" href="{{ url('/') }}" onmouseover="this.style.color='red'" onmouseout="this.style.color='white'">HOME</a>
-            <a style="text-decoration: none; color: white;" href="{{ url('/') }}" onmouseover="this.style.color='red'" onmouseout="this.style.color='white'">ABOUT</a>
-            <a style="text-decoration: none; color: white;" href="{{ route('lawyers') }}" onmouseover="this.style.color='red'" onmouseout="this.style.color='white'">LAWYERS</a>
-            <a style="text-decoration: none; color: white;" href="{{ route('contact') }}" onmouseover="this.style.color='red'" onmouseout="this.style.color='white'">QUESTIONS</a>
-            
-        </div>
-    </nav>
+   
+@include('utilisateur.navbar')
     
     <main>
         <form method="POST" action="{{ route('register_utilisateur') }}">
             @csrf
-
+            @if(session('error'))
+            <div class="alert alert-danger">
+                <strong>Error:</strong> {{ session('error') }}
+            </div>
+            @endif
             <h3>Sign Up</h3>
 
             <label for="name">Name:</label>

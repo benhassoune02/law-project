@@ -112,33 +112,63 @@
     <div id="content">
         <div class="container">
             <h2>Add Lawyer</h2>
-            <form method="POST" action="{{ route('admin.addUser') }}" class="form">
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+        
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        
+            <form method="POST" action="{{ route('admin.addUser') }}"  enctype="multipart/form-data" class="form">
                 @csrf
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" name="name" class="form-control" required>
                 </div>
-
+        
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" name="email" class="form-control" required>
                 </div>
-
+        
                 <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" name="password" class="form-control" required>
                 </div>
-
+        
                 <div class="form-group">
                     <label for="location">Location:</label>
                     <input type="text" name="location" class="form-control" required>
                 </div>
-
+        
                 <div class="form-group">
                     <label for="domaine">Domaine:</label>
-                    <input type="text" name="domaine" class="form-control" required>
+                    <select name="domaine" class="form-control" required>
+                        <option value="crime">CRIME</option>
+                        <option value="family">FAMILY</option>
+                        <option value="divorce">DIVORCE</option>
+                        <option value="business">BUSINESS</option>
+                        <option value="immigration">IMMIGRATION</option>
+                        <option value="commercial">COMMERCIAL</option>
+                        <option value="injury">INJURY</option>
+                        <option value="federal_crime">FEDERAL CRIME</option>
+                    </select>
                 </div>
-               <button type="submit" class="btn btn-primary">Add User</button>
+                <div class="form-group">
+                    <label for="image">Image:</label>
+                    <input type="file" name="image" class="form-control">
+                </div>
+        
+                <button type="submit" class="btn btn-primary">Add User</button>
             </form>
         </div>
     

@@ -15,6 +15,10 @@
             font-size: 16px;
         }
 
+        .nav{
+            padding: 10px;
+        }
+
         .custom-image-size {
             width: 200px;
             height: 200px;
@@ -93,7 +97,7 @@
             @auth('utilisateur')
             <form action="{{ route('utilisateur-logout') }}" method="POST">
                 @csrf
-                <button type="submit" style="cursor: pointer; background-color: #3490dc; color: #fff; border: none; padding: 2px 5px; border-radius: 3px; fontt-size: 8px;">LOGOUT</button>
+                <button type="submit" style="cursor: pointer; background-color: #3490dc; color: #fff; border: none; padding: 3px 7px; border-radius: 3px; font-size: 17px;">LOGOUT</button>
             </form>
             @endauth
         </div>

@@ -110,14 +110,21 @@
     <div id="content">
     
         <h2>Questions</h2>
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Content</th>
+                    <th>Case</th>
                     <th>Utilisateurs</th>
                     <th>Action</th>
                     <th>Confirmation</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -125,6 +132,7 @@
                 <tr>
                     <td>{{ $idea->id }}</td>
                     <td><p>{{ $idea->content }}</p></td>
+                    <td>{{ $idea->case }}</td>
                     <td>{{ optional($idea->utilisateur)->name }}</td>
                     <td>
                         <form action="{{ route('idea.destroy', [$idea->id]) }}" method="POST">

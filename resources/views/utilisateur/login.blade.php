@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
     <style>
         body {
             font-family:  sans-serif;
@@ -21,6 +23,11 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+        }
+
+        .nav{
+            margin-left:42px; 
+            padding: 10px;
         }
 
         .login-container {
@@ -56,7 +63,7 @@
             border-radius: 4px;
             font-size: 16px;
         }
-
+       
         button {
             background-color: #4CAF50;
             color: white;
@@ -107,8 +114,9 @@
             <input type="email" placeholder="Enter your email" name="email" id="email" required>
 
             <label for="password">Password</label>
-            <input type="password" placeholder="Enter your password" name="password" id="password" required>
-
+            <div class="eye">
+                <input type="password" placeholder="Enter your password" name="password" id="password" required>
+            </div>
             <button>Sign In</button>
             @if (Route::has('utilisateur.register-utilisateur'))
                 <a href="{{ route('utilisateur.register-utilisateur') }}">Don't have account ?</a>

@@ -6,6 +6,8 @@ use App\Http\Controllers\IdeaController;
 use Illuminate\Auth\Middleware as AuthMiddleware;
 use App\Http\Controllers\UtilisateurController;
 use App\Http\Controllers\PusherController;
+use App\Http\Controllers\ChatController;
+
 
 
 
@@ -27,6 +29,7 @@ Route::get('register/utilisateur', [ UtilisateurController::class ,'showRegistra
 Route::post('register/utilisateur', [ UtilisateurController::class ,'register'])->name('register_utilisateur');
 Route::get('home',[IdeaController::class,'home'])->name('home');
 Route::get('/lawyers',[IdeaController::class , 'lawyers'])->name('lawyers');
+Route::get('/' , [IdeaController::class , 'showImageSlider'])->name('showImageSlider');
 
  
 Route::get( 'utilisateur-login' ,[ UtilisateurController::class ,'login'])->name('login_page');
@@ -47,6 +50,10 @@ Route::prefix('utilisateur')->middleware('utilisateur')->group(function (){
     Route::get('/ideas/{idea}/edit', [IdeaController::class, 'edit'])->name('questions.editer');
     Route::put('/ideas/{idea}', [IdeaController::class, 'update'])->name('questions.update');
     Route::get('/ajoutidea',[IdeaController::class , 'ajout'])->name('ajout');
+
+
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::post('/chat/send', [ChatController::class, 'sendMessage'])->name('chat.send');
 
     Route::post('/utilisateur-logout', [UtilisateurController::class, 'logout'])->name('utilisateur-logout');
     

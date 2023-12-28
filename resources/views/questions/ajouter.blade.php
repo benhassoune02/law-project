@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lawyers</title>
     
     <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -49,17 +48,26 @@
             @endauth
         </div>
     </nav>
+    
     <div class="container mt-5">
         <h2 class="text-center">Free Q&A with lawyers Online </h2>
         <p class="text-center">
             Welcome to our legal consultation service! Feel free to ask any legal questions or provide details about your case in the form below. Our experienced attorneys are here to assist you with valuable advice and guidance. Please note that the information provided is for general purposes and not legal advice tailored to your specific situation.
         </p>
-
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form method="POST" action="{{ route('storeIdea') }}" class="mt-3">
             @csrf
             <div class="form-group">
                 <label for="case">Your Case:</label>
-                <input class="form-control" name="case" rows="4" placeholder="Describe your case or ask any legal question..." required>
+                <input class="form-control" name="case" rows="4" placeholder="Enter you case here(Crime, Business , ... )" required>
             </div>
             <div class="form-group">
                 <label for="idea">Your Question:</label>

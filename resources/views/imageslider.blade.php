@@ -6,7 +6,7 @@
 <style>
 .custom-slider {
     display: none;
-    max-width: 1200px; /* Increase the max-width */
+    max-width: 1200px; 
     margin: auto;
 } 
 
@@ -106,9 +106,6 @@
     margin-left: 120px; 
 }
 
-/* #parag {
-    margin-left: 130px;
-} */
 
 .main{
     display: flex;
@@ -168,7 +165,7 @@ h4{
         }
 
         button:hover {
-            background-color: darkred;
+            background-color: rgb(109, 0, 0);
         }
 
 .bottom{
@@ -221,7 +218,78 @@ h2{
   margin-right: 204px;
 }
 
+.custom-slider {
+      display: flex;
+      overflow: hidden;
+    }
 
+    .slide-card {
+      flex: 0 0 100%;
+      box-sizing: border-box;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.5s ease;
+    } 
+
+    .glide {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 85px;
+            margin-bottom: 140px;
+        }
+
+        .glide__track {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .glide__slides {
+            display: flex;
+            list-style: none; /* Remove list style */
+            padding: 0; /* Remove default padding */
+            margin: 0; /* Remove default margin */
+        }
+
+  .glide__slide {
+    flex: 0 0 auto;
+    width: 300px; /* Adjust the width as needed */
+    height: 400px;/* Adjust as needed */
+    background-color: #fff; /* Card background color */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card box shadow */
+    overflow: hidden;
+    cursor: pointer; /* Change cursor to hand */
+}
+
+        .card-body {
+            padding: 20px;
+            margin-right: 30px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .info-line {
+            height: 1px;
+            background-color: #3490dc; /* Line color */
+            margin: 10px 0; /* Adjust as needed */
+        }
+
+        .card-text {
+            margin-bottom: 8px;
+        }
+
+        h5{
+            color: #3490dc;
+            margin-left: 
+        }
+        .custom-image-size {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
 </style>
   </head>
   <body>
@@ -236,8 +304,7 @@ h2{
         
       </div>
       <div class="custom-slider fade">
-        
-        <img class="slide-img" src="https://wallpapers.com/images/hd/law-pictures-fyg4gmcxdul3wk6o.jpg">
+        <img class="slide-img" src="https://thatnewdesignsmell.net/wp-content/uploads/2021/09/funny-laws-that-should-be-made.jpg">
       </div>
       <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
       <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -300,7 +367,7 @@ h2{
             <button>
                 <a href="{{ route('contact') }}">Avez-vous des questions ?</a>
             </button>
-            </div>
+        </div>
         
     </div>  
     
@@ -384,6 +451,37 @@ h2{
       
 </div>
 
+<div class="container" style="margin-bottom: 60px;">
+
+  <div style="text-align: center; background-color: #999999; padding: 10px; padding-right: 10px;">
+      <h3 class="text-center" style="display: inline-block;  margin-right: 300px;">L'EQUIPE</h3>
+  </div>
+</div>
+
+  <div class="glide">
+      <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+              @foreach($users as $user)
+                  <li class="glide__slide">
+                      <div class="card mx-auto mb-3">
+                          <div class="card-body">
+                            @if ($user->image)
+                            <img src="data:image/jpeg;base64,{{ base64_encode($user->image) }}" class="custom-image-size">
+                            @endif
+                              <h5 class="card-title">{{ $user->name }}</h5>
+                              <div class="info-line"></div> 
+                              <p class="card-text"><strong>Localisation:</strong> {{ $user->location }}</p>
+                              <p class="card-text"><strong>Specialité:</strong> {{ $user->domaine }}</p>
+                              <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
+                          </div>
+                      </div>
+                  </li>
+              @endforeach
+          </ul>
+      </div>
+  </div>
+</div>
+
 <div class="footer">
   <h5>&copy;2032 | Tous droits réservés. Consultation Juridique</h5>
 
@@ -429,4 +527,48 @@ function scrollToSection(sectionId, event) {
   }
   
   </script>
+<script>
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("custom-slider");
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+  }
+</script>
+        <!-- Include Glide.js -->
+        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+
+        <!-- Initialize Glide.js -->
+        <script>
+            new Glide('.glide', {
+                type: 'carousel',
+                perView: 3, // Adjust the number of visible slides
+                focusAt: 'center',
+                breakpoints: {
+                    768: {
+                        perView: 1
+                    }
+                }
+            }).mount();
+        </script>
 </html>

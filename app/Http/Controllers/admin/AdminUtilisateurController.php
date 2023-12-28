@@ -32,7 +32,7 @@ class AdminUtilisateurController extends Controller
     
         return redirect()->route('admin.utilisateurs.index')->with('success', 'Utilisateur deleted successfully.');}
     
-        public function store(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -82,12 +82,12 @@ class AdminUtilisateurController extends Controller
     public function addUser(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|min:3|max:255',
             'email' => 'required|email|unique:users,email',
             'location' => 'required|string|max:255',
             'domaine' => 'required|string|max:255',
             'password' => 'required|min:8',
-            
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
         ]);
 
         $user = new User();
@@ -111,10 +111,8 @@ class AdminUtilisateurController extends Controller
         $idea = Idea::find($ideaId);
 
         if (!$idea) {
-        // Handle not found...
         }
 
-        // Update the 'approved' field to true
         $idea->update(['approved' => true]);
 
         return redirect()->back()->with('success', 'Idea approved successfully.');

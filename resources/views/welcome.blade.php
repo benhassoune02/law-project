@@ -51,11 +51,11 @@
     </style>
 </head>
 <body>
+    
     @include('newdash')
+
     <div class="navbar">
         <div class="client-links">
-            
-
             @if (Route::has('login_page'))
                 <a href="{{ route('login_page') }}">Sign in (Client)</a>
             @endif
@@ -64,5 +64,6 @@
         
     </div>
     @include('imageslider')
+
 </body>
 </html>

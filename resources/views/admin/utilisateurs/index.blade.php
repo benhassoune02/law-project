@@ -115,8 +115,23 @@
     
     <div id="content">
         
-        <div class="add-utilisateur-form">
-            <h3>Add Utilisateur</h3>
+            <div class="add-utilisateur-form">
+                <h3>Add Utilisateur</h3>
+                @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+                @endif
+    
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form action="{{route('admin.utilisateurs.store')}}" method="post">
                 @csrf
                 <div class="form-group">

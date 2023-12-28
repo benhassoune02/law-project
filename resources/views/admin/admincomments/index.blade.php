@@ -112,8 +112,17 @@
     </div>
     
     <div id="content">
-    
+        @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
         <h3>Answers</h3>
+        @if(session('Answer'))
+        <div class="alert alert-success">
+            {{ session('Answer') }}
+        </div>
+        @endif
         <table class="table">
             <thead>
                 <tr>

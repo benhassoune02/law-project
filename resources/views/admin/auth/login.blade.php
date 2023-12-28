@@ -66,29 +66,44 @@
         .form-group button:hover {
             background-color: #45a049;
         }
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
     </style>
 </head>
 <body>
 
-<div class="login-container">
-    <h2>Login</h2>
-    <form class="login-form" method="POST" action="{{ route('admin.dashboard.check') }}">
-        @csrf
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+    <div class="login-container">
+        <h2>Login</h2>
+        @if(session('error'))
+        <div class="alert alert-danger">
+            <strong>Error:</strong> {{ session('error') }}
         </div>
+        @endif
+        <form class="login-form" method="POST" action="{{ route('admin.dashboard.check') }}">
+            @csrf
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
 
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
 
-        <div class="form-group">
-            <button type="submit">Login</button>
-        </div>
-    </form>
-</div>
+            <div class="form-group">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
 
 </body>
 </html>

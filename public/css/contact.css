@@ -13,6 +13,7 @@ body {
     justify-content: space-between;
     align-items: center; 
     padding: 10px; 
+    margin-right: 42px;
     background-color: rgba(2, 61, 124, 0.89);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
     position: fixed;
@@ -74,10 +75,14 @@ h1 {
     align-items: flex-end;
     margin: 20px auto;
     padding: 15px;
-    background-color: #fff;
+    background-color: #3490dc;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+.idea-form:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .idea-form label {
@@ -128,7 +133,7 @@ h1 {
     background-color: #f0f0f0;
 }
 
-h2, p {
+h2, h6 {
     margin: 0;
 }
 
@@ -151,14 +156,17 @@ h2, p {
 
 
 button {
-    background-color: #007bff; /* Set the background color */
-    color: #fff; /* Set the text color to white */
-    border: 2px solid #007bff; /* Set a border around the button */
-    padding: 10px 20px; /* Add padding for better appearance */
-    font-size: 16px; /* Adjust the font size */
-    cursor: pointer; /* Change the cursor on hover */
-    transition: background-color 0.3s ease; /* Add a smooth transition effect for background color */
+    background-color: #007bff; 
+    color: #fff; 
+    border: 2px solid #007bff;     
+    padding: 10px 20px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
 }
+
+
 a{
     text-decoration: none;
+    
 }

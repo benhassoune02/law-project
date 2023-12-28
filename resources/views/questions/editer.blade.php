@@ -31,6 +31,7 @@
             padding: 10px;
             display: flex;
             justify-content: space-between;
+            margin-left:42px; 
             width: 100%;
         }
 

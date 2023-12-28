@@ -1,65 +1,9 @@
 *{
     padding: 0;
     margin: 0;
-    position: fixed;
-   
 }
 
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    padding: 10px; 
-    position: fixed;
-    background-color: rgba(2, 61, 124, 0.89);
-}
 
-.nav a {
-    text-decoration: none;
-    color: white; 
-    margin: 0 15px; 
-    transition: color 0.3s;
-}
-
-.nav a:hover {
-    color: red; /* Change the color on hover */
-}
-
-.nav img {
-    max-height: 50px; /* Set the maximum height for the logo image */
-}
- this is dashboard.css  and body {
-    
-    background-color: #f8f9fa;
-}
-
-*{
-    padding: 0;
-    margin: 0;
-}
-
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    padding: 10px; 
-    background-color: rgba(2, 61, 124, 0.89);
-}
-
-.nav a {
-    text-decoration: none;
-    color: white; 
-    margin: 0 15px; 
-    transition: color 0.3s;
-}
-
-.nav a:hover {
-    color: red; /* Change the color on hover */
-}
-
-.nav img {
-    max-height: 50px; /* Set the maximum height for the logo image */
-}
 
 h1 {
     padding-left: 490px;

@@ -15,19 +15,13 @@
         </div>
         <div style="display: flex; align-items: center;">
             <a href="{{ url('/') }}">HOME</a>
-
             <a href="" onclick="scrollToSection('about', event)">ABOUT</a>
-            <a  href="{{ route('lawyers') }}">LAWYERS</a>
+            <a href="{{ route('lawyers') }}">LAWYERS</a>
             <a  href="{{ route('contact') }}">QUESTIONS</a>
             @auth('utilisateur')
                 <a href="{{ route('edit_profile') }}">MY PROFIL</a>
              @endauth
-            @auth('utilisateur')
-                <form action="{{ route('utilisateur-logout') }}" method="POST" class="">
-                    @csrf
-                    <button type="submit" style="cursor: pointer; background-color: #3490dc; color: #fff; border: none; padding: 5px 10px; border-radius: 3px;">LOGOUT</button>
-                </form>
-             @endauth
+            
         </div>
     </nav>
     

@@ -15,7 +15,7 @@
             font-family: sans-serif;
             font-size: 16px;
         }
-
+        
         body {
             background-color: #f5f5f5; /* Customized background color */
         }
@@ -36,27 +36,15 @@
             color: red;
         }
 
-        .glide {
-            width: 100%;
-            overflow: hidden;
-            margin-top: 85px;
+        .container-cards {
+            margin-bottom: 60px;
+            background-color: #f8f9fa;
+            margin-top: 100px;
+            padding: 20px; /* Add padding for better spacing */
         }
 
-        .glide__track {
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .glide__slides {
-            display: flex;
-            list-style: none; /* Remove list style */
-            padding: 0; /* Remove default padding */
-            margin: 0; /* Remove default margin */
-        }
-
-        .glide__slide {
-            flex: 0 0 auto;
-            margin-right: 20px; /* Adjust as needed */
+        .card {
+            margin-bottom: 20px; /* Adjust as needed */
             background-color: #fff; /* Card background color */
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card box shadow */
@@ -85,6 +73,43 @@
         h5{
             color: #3490dc;
         }
+        .container-cards {
+            margin-bottom: 60px;
+            background-color: #f8f9fa;
+            margin-top: 100px;
+            padding: 20px; /* Add padding for better spacing */
+            display: flex;
+            flex-wrap: nowrap; /* Prevent wrapping to the next line */
+            overflow-x: auto; /* Enable horizontal scrolling if needed */
+        }
+
+        .card {
+            margin-right: 20px; /* Adjust margin as needed */
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            flex: 0 0 auto; /* Allow the card to shrink */
+        }
+
+        .container-cards {
+            margin-bottom: 60px;
+            background-color: #f8f9fa;
+            margin-top: 100px;
+            padding: 20px; /* Add padding for better spacing */
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping to the next line */
+            justify-content: space-between; /* Distribute items evenly */
+        }
+
+        .card {
+            width: calc(33.3333% - 20px); /* Adjust width and margin as needed */
+            margin-bottom: 20px; /* Adjust margin as needed */
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
     </style>
 </head>
 
@@ -99,49 +124,24 @@
             <a style="text-decoration: none; color: white;" href="{{ url('/') }}" onmouseover="this.style.color='red'" onmouseout="this.style.color='white'">ABOUT</a>
             <a style="text-decoration: none; color: white;" href="{{ route('lawyers') }}" onmouseover="this.style.color='red'" onmouseout="this.style.color='white'">LAWYERS</a>
             <a style="text-decoration: none; color: white;" href="{{ route('contact') }}" onmouseover="this.style.color='red'" onmouseout="this.style.color='white'">QUESTIONS</a>
-            
         </div>
     </nav>
-    <div class="container mt-5">
-        <h1 class="text-center">Our Team</h1>
-
-        <div class="glide">
-            <div class="glide__track" data-glide-el="track">
-                <ul class="glide__slides">
-                    @foreach($users as $user)
-                        <li class="glide__slide">
-                            <div class="card mx-auto mb-3">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $user->name }}</h5>
-                                    <div class="info-line"></div> 
-                                    <p class="card-text"><strong>Location:</strong> {{ $user->location }}</p>
-                                    <p class="card-text"><strong>Practice areas:</strong> {{ $user->domaine }}</p>
-                                    <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
-                                </div>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
+    <div class="container-cards">
+        @foreach($users as $user)
+            <div class="card">
+                @if ($user->image)
+                    <img src="data:image/jpeg;base64,{{ base64_encode($user->image) }}" class="custom-image-size">
+                @endif
+                <div class="card-body">
+                    <h5 class="card-title">{{ $user->name }}</h5>
+                    <div class="info-line"></div>
+                    <p class="card-text">Location: {{ $user->location }}</p>
+                    <p class="card-text">Practice areas: {{ $user->domaine }}</p>
+                    <p class="card-text"> Email: {{ $user->email }}</p>
+                </div>
             </div>
-        </div>
+        @endforeach
     </div>
-    
-    <!-- Include Glide.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-
-    <!-- Initialize Glide.js -->
-    <script>
-        new Glide('.glide', {
-            type: 'carousel',
-            perView: 3, // Adjust the number of visible slides
-            focusAt: 'center',
-            breakpoints: {
-                768: {
-                    perView: 1
-                }
-            }
-        }).mount();
-    </script>
 
 </body>
 

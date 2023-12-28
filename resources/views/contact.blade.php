@@ -11,6 +11,13 @@
             font-family: sans-serif;
 
         }
+
+        nav{
+            margin-right: 12px;
+        }
+
+        
+
         .comments-section {
         margin-top: 15px;
         margin-left: 25px
@@ -67,10 +74,12 @@
         text-decoration: none;
         background-color: #3490dc;
     }
+
     a{
         text-decoration: none;
-        color: blue;
+        color: white; 
     }
+
     p{
         margin-top: 85px;
         margin-left: 85px;
@@ -81,7 +90,51 @@
     }
     h3{
         margin-top: 299px;
-        margin-left: 500px;
+        margin-left: 305px;
+    }
+
+    #welcome-message {
+        margin-top: 99px;
+        margin-left: 120px;
+        font-size: 40px;    
+    }
+
+    #ask-question-link {
+        text-decoration: none;
+    }
+
+    #Q-A{
+        display: flex;
+    }
+
+    #Q-A p{
+        margin-right: 60px;
+        font-size: 25px;
+
+    }
+
+    #Q-A img{
+        margin-right: 60px;
+        margin-top: 60px;
+
+    }
+
+    #ask{
+        color: white;
+        margin-left: 81px;
+        margin-top: 30px;
+    }
+
+    #ask button {
+        border-radius: 30px;
+    }
+
+    #ask button {
+        transition: box-shadow 0.3s ease; 
+    }
+
+    #ask button:hover {
+        box-shadow: 0 0 11px rgba(0, 0, 0, 0.2); 
     }
     </style>
     </head>
@@ -108,16 +161,39 @@
        
        
         @if ($ideas->count() > 0)
-        <form method="POST" action="{{ route('storeIdea') }}" class="idea-form">
+        <button >
+            <form method="POST" action="{{ route('storeIdea') }}" class="idea-form">
             @csrf
                 <a href="{{ route('ajout') }}">ADD QUESTION</a>
-        </form>
+            </form>
+        </button>
         @endif
+        <div id="welcome-message">
+            <h2>Welcome ! Feel free to ask any question.</h2>
+        </div>
+        <div id="Q-A">
+            <p>Our team is here to assist you. Ask about legal matters, get advice, or seek information,
+            We're delighted to have you here. Whether you're facing legal uncertainties or simply seeking guidance,
+            our team of experienced professionals is ready to assist you.
+            Feel free to ask any legal questions you may have. From general inquiries to specific case details,
+            Your questions are important to us, and we understand the significance of legal matters in your life. 
+            Rest assured that your queries will be handled with care and confidentiality. 
+            Once submitted, our team will review them promptly, and you can expect to receive comprehensive advice tailored to your situation.
+            Thank you for choosing our platform. We look forward to helping you navigate the complexities of the legal world and providing the support you need.</p>
+            <img src="https://t3.ftcdn.net/jpg/02/14/40/92/360_F_214409262_ZJh28hhHGY8fkPfY3UpxKKZBjup9kRkA.jpg" alt="">
+        </div>
+        
+        <div id="ask">
+            <a href="{{ route('ajout') }}"><button>Ask a Question</button></a>
+        </div>
+  
+     
         @if ($ideas->count() > 0)
         <h1> YOUR QUESTIONS : </h1>
 
         @foreach ($ideas->sortByDesc('created_at') as $idea)
             <div class="cart-item">
+                <h5 style="margin-bottom: 10px; ">The Case : {{ $idea->case}}</h5>
                 <p>{{ $idea->content }}</p>
                 <p id="By">By: {{ optional($idea->utilisateur)->name }}</p>
                 <div class="svgs">
@@ -148,8 +224,6 @@
                 </div>
             @endif
         @endforeach
-        @else
-            <a href="{{ route('ajout') }}"><h3>Click Here to ask your questions and display it here </h3></a>
         @endif
 
 

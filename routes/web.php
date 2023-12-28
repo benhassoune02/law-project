@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,8 +36,13 @@ Route::middleware('auth')->group(function () {
     Route::put('/comments/{comment}', [CommentController::class, 'update'])->name('comment.update');
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
     Route::post('/logout', [ProfileController::class, 'logout'])->name('logout');
-    
+
+    Route::get('/messages', [ChatController::class, 'index'])->name('messages.index');
+    Route::get('/messages/{user}', [ChatController::class, 'show'])->name('messages.show');
+    Route::post('/send-message/{user}', [ChatController::class, 'sendMessage'])->name('send.message');
+
 });
+ 
 
 
 

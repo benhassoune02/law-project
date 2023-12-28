@@ -48,7 +48,6 @@ class IdeaController extends Controller
                 $utilisateur->ideas()->create([
                     'content' => $request->input('idea'),
                     'case' => $request->input('case'),
-                    'user_id' => $request->input('userid'),
                     'approved' => false, 
                 ]);
             }
@@ -92,9 +91,14 @@ class IdeaController extends Controller
     public function lawyers() 
     {
         $users = User::all();
-
+    
         return view('users.lawyers', ['users' => $users]);
     }
-    
-}
+    public function showImageSlider()
+    {
 
+        $users = User::all();
+        
+        return view('welcome', ['users' => $users]);
+    }
+}
