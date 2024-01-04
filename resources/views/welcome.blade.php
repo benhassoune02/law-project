@@ -14,7 +14,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px;
-            background-color: rgba(4, 115, 234, 0.89);
+            background-color: rgba(181, 181, 181, 0.89);
             
         }
 
@@ -42,11 +42,25 @@
         }
 
         .client-links a,
-        .avocat-links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-        }
+.avocat-links a {
+    color: #000000;             
+    text-decoration: none;        
+    font-size: 16px;              
+    font-weight: bold;             
+    border-radius: 4px;      
+    transition: all 0.3s ease;      
+}
+
+.client-links a:hover,
+.avocat-links a:hover {
+    color: #ffffff;                 
+    text-decoration: underline;    
+}
+
+.client-links a:active,
+.avocat-links a:active {
+    color: #ffffff;              
+}
         
     </style>
 </head>
@@ -57,7 +71,7 @@
     <div class="navbar">
         <div class="client-links">
             @if (Route::has('login_page'))
-                <a href="{{ route('login_page') }}">Sign in (Client)</a>
+                <a href="{{ route('login_page') }}">Login</a>
             @endif
         </div>
 

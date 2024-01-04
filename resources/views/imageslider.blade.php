@@ -5,14 +5,14 @@
 
 <style>
 .custom-slider {
-    display: none;
-    max-width: 1200px; 
-    margin: auto;
-} 
+  display: none;
+  max-width: 1600px; 
+  max-height: 1200px;
+}
 
 .slide-container {
-  max-width: 1200px; 
-  margin-top: 25px;
+  max-width: 1800px; 
+  margin-top: 15px;
 }
 .prev, .next {
   cursor: pointer;
@@ -234,8 +234,11 @@ h2{
     .glide {
             width: 100%;
             overflow: hidden;
-            margin-top: 85px;
-            margin-bottom: 140px;
+            margin-top: 0px;
+            margin-bottom: 90px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            background: #c5c5c5;
         }
 
         .glide__track {
@@ -465,14 +468,15 @@ h2{
                   <li class="glide__slide">
                       <div class="card mx-auto mb-3">
                           <div class="card-body">
-                            @if ($user->image)
-                            <img src="data:image/jpeg;base64,{{ base64_encode($user->image) }}" class="custom-image-size">
-                            @endif
+                              @if ($user->image)
+                                <img src="{{ asset($user->image) }}" class="custom-image-size">
+                              @endif
                               <h5 class="card-title">{{ $user->name }}</h5>
                               <div class="info-line"></div> 
                               <p class="card-text"><strong>Localisation:</strong> {{ $user->location }}</p>
                               <p class="card-text"><strong>Specialité:</strong> {{ $user->domaine }}</p>
                               <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
+                              <p class="card-text"><strong>Telephone:</strong> {{ $user->telephone }}</p>
                           </div>
                       </div>
                   </li>

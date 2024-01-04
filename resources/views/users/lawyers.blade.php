@@ -130,7 +130,7 @@
         @foreach($users as $user)
             <div class="card">
                 @if ($user->image)
-                    <img src="data:image/jpeg;base64,{{ base64_encode($user->image) }}" class="custom-image-size">
+                    <img src="{{ asset($user->image) }}" class="custom-image-size">
                 @endif
                 <div class="card-body">
                     <h5 class="card-title">{{ $user->name }}</h5>
@@ -138,6 +138,7 @@
                     <p class="card-text">Location: {{ $user->location }}</p>
                     <p class="card-text">Practice areas: {{ $user->domaine }}</p>
                     <p class="card-text"> Email: {{ $user->email }}</p>
+                    <p class="card-text"> Telephone: {{ $user->telephone }}</p>
                 </div>
             </div>
         @endforeach

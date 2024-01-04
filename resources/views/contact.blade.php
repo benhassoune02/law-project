@@ -88,6 +88,11 @@
     h1{
         margin-top: 99px;
     }
+
+    h2{
+        font-size: 46px;
+    }
+
     h3{
         margin-top: 299px;
         margin-left: 305px;
@@ -169,7 +174,7 @@
         </button>
         @endif
         <div id="welcome-message">
-            <h2>Welcome ! Feel free to ask any question.</h2>
+            <h2>Welcome {{ $utilisateur->name }} ! Feel free to ask any question.</h2>
         </div>
         <div id="Q-A">
             <p>Our team is here to assist you. Ask about legal matters, get advice, or seek information,
@@ -195,7 +200,7 @@
             <div class="cart-item">
                 <h5 style="margin-bottom: 10px; ">The Case : {{ $idea->case}}</h5>
                 <p>{{ $idea->content }}</p>
-                <p id="By">By: {{ optional($idea->utilisateur)->name }}</p>
+                <p id="By">  {{ optional($idea->utilisateur)->name }}</p>
                 <div class="svgs">
                     <a href="{{ route('questions.editer', ['idea' => $idea->id]) }}" id="pencil">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -217,7 +222,7 @@
                         @foreach ($idea->comments->sortByDesc('created_at') as  $comment)
                             <li class="comment-item">
                                 <span class="comment-content">{{ $comment->content }}</span>
-                                <span class="comment-author">By: {{ $comment->user->name }}</span>
+                                <span class="comment-author"> {{ $comment->user->name }}</span>
                             </li>
                         @endforeach
                     </ul>

@@ -128,7 +128,7 @@
                 </div>
             @endif
         
-            <form method="POST" action="{{ route('admin.addUser') }}"  enctype="multipart/form-data" class="form">
+            <form method="POST" action="{{ route('admin.addUser') }}" enctype="multipart/form-data" class="form">
                 @csrf
                 <div class="form-group">
                     <label for="name">Name:</label>
@@ -149,7 +149,11 @@
                     <label for="location">Location:</label>
                     <input type="text" name="location" class="form-control" required>
                 </div>
-        
+                <div class="form-group">
+                    <label for="telephone">Telephone:</label>
+                    <input type="text" name="telephone" class="form-control" >
+                </div>
+                
                 <div class="form-group">
                     <label for="domaine">Domaine:</label>
                     <select name="domaine" class="form-control" required>

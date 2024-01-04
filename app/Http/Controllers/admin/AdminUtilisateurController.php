@@ -87,6 +87,7 @@ class AdminUtilisateurController extends Controller
             'location' => 'required|string|max:255',
             'domaine' => 'required|string|max:255',
             'password' => 'required|min:8',
+            'telephone' => 'required|string|max:12',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
         ]);
 
@@ -95,14 +96,17 @@ class AdminUtilisateurController extends Controller
         $user->email = $request->input('email');
         $user->location = $request->input('location');
         $user->domaine = $request->input('domaine');
+        $user->telephone = $request->input('telephone');
         $user->password = bcrypt($request->input('password'));
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('profile_images', 'public');
-            $user->image = $imagePath;
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('profile_images'), $imageName);
+            $user->image = 'profile_images/' . $imageName;
         }
     
         $user->save();
-    
+
         return redirect()->back()->with('success', 'User added successfully');
     }
 
