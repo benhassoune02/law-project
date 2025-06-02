@@ -90,15 +90,37 @@ class IdeaController extends Controller
 
     public function lawyers() 
     {
-        $users = User::all();
-    
+        $users = User::withCount('contributions as contributions_count')
+            ->orderBy('contributions_count', 'desc')
+            ->get();
+
         return view('users.lawyers', ['users' => $users]);
     }
+
+    public function searchLawyers(Request $request) {
+
+        $query = $request->input('query');
+        
+        $users = User::where('name', 'LIKE', '%' . $query . '%')
+            ->orWhere('location', 'LIKE', '%' . $query . '%')
+            ->withCount('contributions as contributions_count')
+            ->orderBy('contributions_count', 'desc')
+            ->get();
+    
+        return view('users.lawyers', ['users' => $users]);
+
+
+    }
+
+    
     public function showImageSlider()
     {
 
-        $users = User::all();
-        
+        $users = User::withCount('contributions as contributions_count')
+            ->orderBy('contributions_count', 'desc')
+            ->take(5)
+            ->get();
+    
         return view('welcome', ['users' => $users]);
     }
 }

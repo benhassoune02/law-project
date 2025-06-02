@@ -56,14 +56,14 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function messagesSent()
+    public function contributions()
     {
-        return $this->hasMany(Message::class, 'from_user');
+        return $this->hasMany(Contribution::class);
     }
 
-    public function messagesReceived()
+    public function contributionCount()
     {
-        return $this->hasMany(Message::class, 'to_user');
+        return $this->hasMany(Contribution::class)->distinct('idea_id')->count('idea_id');
     }
 
 }

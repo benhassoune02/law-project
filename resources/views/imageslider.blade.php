@@ -285,7 +285,7 @@ h2{
         }
 
         h5{
-            color: #3490dc;
+            color: #17a2b8;
             margin-left: 
         }
         .custom-image-size {
@@ -293,6 +293,23 @@ h2{
             height: 200px;
             object-fit: cover;
         }
+
+.btn-info {
+    padding: 10px 20px;
+    background-color: #17a2b8;
+    margin-left: 116px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+}
 </style>
   </head>
   <body>
@@ -456,8 +473,8 @@ h2{
 
 <div class="container" style="margin-bottom: 60px;">
 
-  <div style="text-align: center; background-color: #999999; padding: 10px; padding-right: 10px;">
-      <h3 class="text-center" style="display: inline-block;  margin-right: 300px;">L'EQUIPE</h3>
+  <div style="text-align: center; background-color: #999999; padding: 10px; padding-right: 10px; ">
+      <h3 class="text-center" style="display: inline-block; margin-left: 12px;  ">NOS MEILLEURS AVOCATS !</h3>
   </div>
 </div>
 
@@ -473,10 +490,10 @@ h2{
                               @endif
                               <h5 class="card-title">{{ $user->name }}</h5>
                               <div class="info-line"></div> 
-                              <p class="card-text"><strong>Localisation:</strong> {{ $user->location }}</p>
-                              <p class="card-text"><strong>Specialité:</strong> {{ $user->domaine }}</p>
+                              <p class="card-text"><strong>Number of Contributions:</strong> {{ $user->contributions_count }}</p>
                               <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
-                              <p class="card-text"><strong>Telephone:</strong> {{ $user->telephone }}</p>
+                              <p class="card-text"><strong>N° de télephone:</strong> {{ $user->telephone }}</p>
+                              <a href="{{ route('lawyers') }}" class="btn btn-info">More about Lawyers ...</a>
                           </div>
                       </div>
                   </li>
@@ -564,15 +581,15 @@ function scrollToSection(sectionId, event) {
 
         <!-- Initialize Glide.js -->
         <script>
-            new Glide('.glide', {
-                type: 'carousel',
-                perView: 3, // Adjust the number of visible slides
-                focusAt: 'center',
-                breakpoints: {
-                    768: {
-                        perView: 1
-                    }
-                }
-            }).mount();
-        </script>
+          new Glide('.glide', {
+              type: 'carousel',
+              perView: 3, 
+              focusAt: '0', 
+              breakpoints: {
+                  768: {
+                      perView: 1
+                  }
+              }
+          }).mount();
+      </script>
 </html>

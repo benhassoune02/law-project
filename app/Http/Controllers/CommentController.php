@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Idea;
+use App\Models\Contribution;
+
 
 class CommentController extends Controller
 {
@@ -14,12 +16,23 @@ class CommentController extends Controller
             'comment' => 'required|string|max:1500',
         ]);
 
-        $idea->comments()->create([
+        $comment = $idea->comments()->create([
             'content' => $request->input('comment'),
             'user_id' => auth()->id(),
         ]);
 
-        return back();
+        $existingContribution = Contribution::where('user_id', $comment->user_id)
+            ->where('idea_id', $idea->id)
+            ->first();
+
+        if (!$existingContribution) {
+            Contribution::create([
+            'user_id' => $comment->user_id,
+            'idea_id' => $idea->id
+        ]);
+    }
+
+        return redirect()->route('contact-user');
     }
 
     public function edit(Comment $comment)
@@ -43,8 +56,25 @@ class CommentController extends Controller
 
     public function destroy(Comment $comment)
     {
+        $ideaId = $comment->idea_id;
+        $userId = $comment->user_id;
+
         $comment->delete();
 
+        $remainingComments = Comment::where('user_id', $userId)
+            ->where('idea_id', $ideaId)
+            ->exists();
+
+            if (!$remainingComments) {
+                $contribution = Contribution::where('user_id', $userId)
+                                            ->where('idea_id', $ideaId)
+                                            ->first();
+        
+                if ($contribution) {
+                    $contribution->delete();
+                }
+            }
+            
         return redirect()->back()->with('Answer', 'Comment deleted successfully.');
     }
 }

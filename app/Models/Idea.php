@@ -31,4 +31,9 @@ class Idea extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function contributions()
+    {
+        return $this->hasMany(Contribution::class);
+    }   
 }

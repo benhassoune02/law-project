@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('ideas', function (Blueprint $table) {
-            $table->boolean('approved')->default(false);
+            $table->string('case');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('ideas', function (Blueprint $table) {
-            $table->dropColumn('approved');
+            $table->string('case');
         });
     }
 };

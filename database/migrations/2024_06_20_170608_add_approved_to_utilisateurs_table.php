@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('ideas', function (Blueprint $table) {
-            $table->string('case');
+        Schema::table('utilisateurs', function (Blueprint $table) {
+            $table->boolean('approved')->default(false);
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('ideas', function (Blueprint $table) {
-            $table->dropColumn('case');
+        Schema::table('utilisateurs', function (Blueprint $table) {
+            //
         });
     }
 };

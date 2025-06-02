@@ -51,14 +51,4 @@ class Utilisateur extends Authenticatable
         return $this->hasMany(Idea::class);
     }
 
-    public function messagesSent()
-    {
-        return $this->hasMany(Message::class, 'from_user');
-    }
-
-    public function messagesReceived()
-    {
-        return $this->hasMany(Message::class, 'to_user');
-    }
-
 }

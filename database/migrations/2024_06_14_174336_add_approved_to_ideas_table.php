@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('avocats', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->timestamps();
+        Schema::table('ideas', function (Blueprint $table) {
+            $table->boolean('approved')->default(false)->after('utilisateur_id');
         });
     }
 
@@ -29,6 +25,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('avocats');
+        Schema::table('ideas', function (Blueprint $table) {
+            $table->dropColumn('approved');
+
+        });
     }
 };

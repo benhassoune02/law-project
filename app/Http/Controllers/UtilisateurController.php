@@ -89,8 +89,7 @@ class UtilisateurController extends Controller
 
         if (Auth::guard('utilisateur')->attempt($credentials)) {
             $utilisateur = Auth::guard('utilisateur')->user();
-
-
+            
             if ($utilisateur->approved) {
                 return redirect()->route('contact');
             } else {

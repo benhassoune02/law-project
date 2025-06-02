@@ -21,20 +21,16 @@
         .navbar a {
             color: #fff;
             text-decoration: none;
-            margin: 0 15px; /* Adjust the spacing between links */
-            font-size: 16px; /* Adjust the font size */
+            margin: 0 15px; 
+            font-size: 16px; 
         }
 
-        .navbar .logo {
-            /* Add styling for the logo */
-        }
+
 
         .navbar a.active {
             font-weight: bold;
-            /* Add any other styles for the active link */
         }
 
-        /* Add styles for the client-links and avocat-links */
         .client-links, .avocat-links {
             display: flex;
             margin-top: 85px;

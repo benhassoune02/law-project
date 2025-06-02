@@ -92,7 +92,7 @@
         <div style="display: flex; align-items: center;">
             <a style="text-decoration: none; color: white;" href="{{ route('contact') }}" onmouseover="this.style.color='red'" onmouseout="this.style.color='white'">QUESTIONS</a>
             @auth('utilisateur')
-            <a style="text-decoration: none; color: white;" href="{{ route('edit_profile') }}" onmouseover="this.style.color='red'" onmouseout="this.style.color='white'">MY PROFIL</a>
+            <a style="text-decoration: none; color: white;" href="{{ route('edit_profile') }}" onmouseover="this.style.color='red'" onmouseout="this.style.color='white'">MY PROFILE</a>
             @endauth
             @auth('utilisateur')
             <form action="{{ route('utilisateur-logout') }}" method="POST">

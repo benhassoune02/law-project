@@ -152,7 +152,7 @@
                 {{-- <a href="{{ url('/') }}">HOME</a> --}}
                 <a href="{{ route('contact') }}">QUESTIONS</a>
                 @auth('utilisateur')
-                    <a href="{{ route('edit_profile') }}">MY PROFIL</a>
+                    <a href="{{ route('edit_profile') }}">MY PROFILE</a>
                 @endauth
                 @auth('utilisateur')
                     <form action="{{ route('utilisateur-logout') }}" method="POST" class="">
@@ -174,7 +174,7 @@
         </button>
         @endif
         <div id="welcome-message">
-            <h2>Welcome {{ $utilisateur->name }} ! Feel free to ask any question.</h2>
+            <h2>Welcome {{ $utilisateur->name }} ! Feel free to ask any question. <br> (Your Question will display after the validation by the admin)</h2>
         </div>
         <div id="Q-A">
             <p>Our team is here to assist you. Ask about legal matters, get advice, or seek information,
@@ -184,7 +184,7 @@
             Your questions are important to us, and we understand the significance of legal matters in your life. 
             Rest assured that your queries will be handled with care and confidentiality. 
             Once submitted, our team will review them promptly, and you can expect to receive comprehensive advice tailored to your situation.
-            Thank you for choosing our platform. We look forward to helping you navigate the complexities of the legal world and providing the support you need.</p>
+            Thank you for choosing our platform. We look forward to helping you navigate the complexities of the legal world and providing the support you need. </p>
             <img src="https://t3.ftcdn.net/jpg/02/14/40/92/360_F_214409262_ZJh28hhHGY8fkPfY3UpxKKZBjup9kRkA.jpg" alt="">
         </div>
         
